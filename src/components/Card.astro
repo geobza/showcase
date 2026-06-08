@@ -11,7 +11,8 @@
  * data-* contract (read from entry data, independent of what's shown):
  *   - filter uses data-domain + data-year
  *   - search uses those plus data-title / data-tech / data-author /
- *     data-description (tech & author are comma-joined; match case-insensitively)
+ *     data-description (domain, tech & author are comma-joined; match
+ *     case-insensitively)
  */
 import type { CollectionEntry } from 'astro:content';
 import CardCover from './CardCover.astro';
@@ -25,7 +26,7 @@ const { data, id } = entry;
 ---
 
 <article
-  data-domain={data.domain}
+  data-domain={data.domains.join(', ')}
   data-year={data.year}
   data-title={data.title}
   data-tech={data.tech.join(', ')}

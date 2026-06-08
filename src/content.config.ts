@@ -20,19 +20,25 @@ const projects = defineCollection({
         .min(1),
       tech: z.array(z.string()),
       year: z.number(),
-      // Constrained category used for gallery filtering. Adding a new value here
-      // is backward-compatible (existing entries stay valid); renaming/removing
-      // one is not. Keep the value->label map (filter UI / CONTRIBUTING) in sync.
-      domain: z.enum([
-        'web',
-        'mobile',
-        'ai-ml',
-        'cybersecurity',
-        'game-dev',
-        'hardware',
-        'systems',
-        'infrastructure',
-      ]),
+      // Constrained categories used for gallery filtering. A project can span
+      // more than one (e.g. a cybersecurity-focused web app), so this is an
+      // array with at least one value. Adding a new enum value is
+      // backward-compatible (existing entries stay valid); renaming/removing one
+      // is not. Keep the value->label map (filter UI / CONTRIBUTING) in sync.
+      domains: z
+        .array(
+          z.enum([
+            'web',
+            'mobile',
+            'ai-ml',
+            'cybersecurity',
+            'game-dev',
+            'hardware',
+            'systems',
+            'infrastructure',
+          ]),
+        )
+        .min(1),
       github: z.url(),
       deploy: z.url().optional(),
       cover: image(),

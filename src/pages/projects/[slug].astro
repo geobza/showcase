@@ -33,7 +33,9 @@ const { Content } = await render(entry);
     <header class="flex flex-col gap-3">
       <div class="flex flex-wrap items-baseline justify-between gap-2">
         <h1 class="text-3xl font-bold tracking-tight">{data.title}</h1>
-        <span class="text-muted text-sm">{data.domain} · {data.year}</span>
+        <span class="text-muted text-sm"
+          >{data.domains.join(', ')} · {data.year}</span
+        >
       </div>
       <p class="text-muted text-lg">{data.description}</p>
 

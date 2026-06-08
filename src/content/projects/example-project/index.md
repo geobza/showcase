@@ -6,7 +6,7 @@ builtBy:
     url: 'https://example.com'
 tech: ['TypeScript', 'Astro', 'pnpm']
 year: 2025
-domain: 'web'
+domains: ['web']
 github: 'https://github.com/example/example-project'
 deploy: 'https://example-project.pages.dev'
 cover: './cover.png'
@@ -22,6 +22,6 @@ The project serves as a structural template. When a contributor adds their own p
 
 ## Technical notes
 
-- The `domain` field drives filtering on the gallery page and must be one of a fixed set of categories: `web`, `mobile`, `ai-ml`, `cybersecurity`, `game-dev`, `hardware`, `systems`, `infrastructure`. An unrecognized value fails the build.
+- The `domains` field drives filtering on the gallery page. It's an array of one or more categories from a fixed set: `web`, `mobile`, `ai-ml`, `cybersecurity`, `game-dev`, `hardware`, `systems`, `infrastructure` (e.g. a cybersecurity-focused web app could be `['web', 'cybersecurity']`). An unrecognized value fails the build.
 - The `tech` array accepts any freeform strings — the gallery page aggregates them into a filter list at build time.
 - `deploy` is omitted when a project has no public deployment (library, CLI tool, etc.).
